@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { KeyringProvider, useKeyring } from '@w3ui/react-keyring'
+import { UploaderProvider } from '@w3ui/react-uploader'
+import ContentPage from './ContentPage'
+import { accessServiceConnection, accessServicePrincipal, uploadServiceConnection, uploadServicePrincipal } from './StagingService'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <KeyringProvider servicePrincipal={accessServicePrincipal} connection={accessServiceConnection}>
+      <UploaderProvider servicePrincipal={uploadServicePrincipal} connection={uploadServiceConnection}>
+        <AgentLoader>
+          <ContentPage></ContentPage>
+        </AgentLoader>
+      </UploaderProvider>
+    </KeyringProvider>
+  )
 }
 
-export default App;
+function AgentLoader ({ children }) {
+  const [, { loadAgent }] = useKeyring()
+  // eslint-disable-next-line
+  useEffect(() => { loadAgent() }, []) // load agent - once.
+  return children
+}
+
+export default App
