@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useUploader } from "@w3ui/react-uploader";
+import { useKeyring } from "@w3ui/react-keyring";
 
 export default function Upload() {
   const [{ storedDAGShards }, uploader] = useUploader();
+  const [{}, { unloadAgent }] = useKeyring();
   const [file, setFile] = useState(null);
   const [dataCid, setDataCid] = useState("");
   const [status, setStatus] = useState("");
@@ -37,23 +39,28 @@ export default function Upload() {
   }
 
   return (
-    <form onSubmit={handleUploadSubmit}>
-      <div className="db mb3">
-        <label htmlFor="file" className="db mb2">
-          File:
-        </label>
-        <input
-          id="file"
-          className="db pa2 w-100 ba br2"
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          required
-        />
-      </div>
-      <button type="submit" className="ph3 pv2">
-        Upload
-      </button>
-    </form>
+    <div>
+      <form onSubmit={handleUploadSubmit}>
+        <div className="db mb3">
+          <label htmlFor="file" className="db mb2">
+            File:
+          </label>
+          <input
+            id="file"
+            className="db pa2 w-100 ba br2"
+            type="file"
+            onChange={(e) => setFile(e.target.files[0])}
+            required
+          />
+        </div>
+        <button type="submit" className="ph3 pv2">
+          Upload
+        </button>
+      </form>
+      <form onSubmit={e => { e.preventDefault(); unloadAgent() }}>
+        <button type='submit' className='ph3 pv2'>Sign Out</button>
+      </form>
+    </div>
   );
 }
 
