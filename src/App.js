@@ -91,7 +91,7 @@ function AgentLoader({ children }) {
   // eslint-disable-next-line
   useEffect(() => {
     loadAgent();
-  }, []); // load agent - once.
+  }, [loadAgent]); // load agent - once.
   return children;
 }
 
