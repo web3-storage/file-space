@@ -23,11 +23,11 @@ export default function UploadNew() {
       setDataCid(cid);
     } catch (err) {
       console.error(err);
-      navigate("./error");
-    } finally {
-      setStatus("done");
-      navigate("./success");
+      return navigate("./error");
     }
+
+    setStatus("done");
+    return navigate("./success");
   };
 
   if (status === "uploading") {
@@ -36,7 +36,7 @@ export default function UploadNew() {
 
   return (
     <div>
-      <h1> Pick the file(s) you want to share:</h1>
+      <h1 className="tc pa4"> Pick the file(s) you want to share:</h1>
       <div className="mw7 db">
         <FilePicker onPickFiles={handleUploadSubmit}></FilePicker>
       </div>
