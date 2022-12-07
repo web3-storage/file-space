@@ -8,6 +8,7 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (space?.registered()) {
@@ -41,11 +42,16 @@ export default function Signin() {
       await createSpace();
       await registerSpace(email);
     } catch (err) {
-      throw new Error("failed to register", { cause: err });
+      console.error(err);
+      setError(true);
     } finally {
       setSubmitted(false);
     }
   };
+
+  if (error) {
+    return <div>Ups! Something went wrong! Please try again later!</div>;
+  }
 
   return (
     <form onSubmit={handleRegisterSubmit}>
