@@ -15,11 +15,14 @@ import {
   Outlet,
 } from "react-router-dom";
 import Home from "./routes/Home";
-import Upload from "./routes/Upload";
+import Upload from "./routes/Upload/Upload";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Signin from "./routes/Signin";
 import Dashboard from "./routes/Dashboard";
-import Header from "./components/Header";
+import Header from "./components/Header/Header.js";
+import UploadNew from "./routes/Upload/UploadNew";
+import UploadSuccess from "./routes/Upload/UploadSuccess";
+import UploadError from "./routes/Upload/UploadError";
 
 function Index() {
   const [{ space }] = useKeyring();
@@ -76,12 +79,23 @@ const router = createBrowserRouter([
         element: <Signin />,
       },
       {
-        path: "/upload",
+        path: "/upload/",
         element: (
           <ProtectedRoute>
             <Upload />
           </ProtectedRoute>
         ),
+        children: [
+          { index: true, element: <UploadNew /> },
+          {
+            path: "success/",
+            element: <UploadSuccess />,
+          },
+          {
+            path: "error/",
+            element: <UploadError />,
+          },
+        ],
       },
       {
         path: "/dashboard",

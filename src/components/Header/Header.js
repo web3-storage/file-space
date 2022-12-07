@@ -15,7 +15,7 @@ import { NavLink, Link } from "react-router-dom";
  */
 export default function Header({ navLinks }) {
   return (
-    <header className="w-100 pa3 ph5-ns bg-white">
+    <header className="w-100 pa3 ph5-ns">
       <div className="flex flex-wrap flex-nowrap-ns items-center mw9 center w-100">
         <div className="flex items-center w-100 w-50-ns mb2 mb0-ns">
           <Link
