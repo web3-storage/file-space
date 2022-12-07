@@ -12,12 +12,14 @@ import {
   createBrowserRouter,
   RouterProvider,
   useNavigate,
+  Outlet,
 } from "react-router-dom";
 import Home from "./routes/Home";
 import Upload from "./routes/Upload";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Signin from "./routes/Signin";
 import Dashboard from "./routes/Dashboard";
+import Header from "./components/Header";
 
 function Index() {
   const [{ space }] = useKeyring();
@@ -33,38 +35,63 @@ function Index() {
   return <Home />;
 }
 
+function Root() {
+  return (
+    <>
+      <Header
+        navLinks={[
+          {
+            text: "Upload",
+            to: "upload",
+          },
+          {
+            text: "Your files",
+            to: "dashboard",
+          },
+        ]}
+      ></Header>
+      <div className="ph3 ph5-ns">
+        <Outlet />
+      </div>
+    </>
+  );
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Index />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/signin",
-    element: <Signin />,
-  },
-  {
-    path: "/upload",
-    element: (
-      <ProtectedRoute>
-        <Upload />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <Dashboard />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "*",
-    element: <div> Ups! Not found! Go back to homepage </div>,
+    element: <Root />,
+    errorElement: <div> Ups! Not found! Go back to homepage </div>,
+    children: [
+      {
+        path: "/",
+        element: <Index />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/signin",
+        element: <Signin />,
+      },
+      {
+        path: "/upload",
+        element: (
+          <ProtectedRoute>
+            <Upload />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
+      },
+    ],
   },
 ]);
 
@@ -79,7 +106,7 @@ function App() {
         connection={uploadServiceConnection}
       >
         <AgentLoader>
-          <RouterProvider router={router} />
+          <RouterProvider router={router}></RouterProvider>
         </AgentLoader>
       </UploaderProvider>
     </KeyringProvider>
