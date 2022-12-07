@@ -79,6 +79,10 @@ const router = createBrowserRouter([
         element: <Signin />,
       },
       {
+        path: "/download/:cid",
+        element: <div> Download the file </div>,
+      },
+      {
         path: "/upload/",
         element: (
           <ProtectedRoute>
