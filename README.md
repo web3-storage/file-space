@@ -1,18 +1,36 @@
 # Getting started
 ## How to link to local version on w3ui
-Given the latest w3ui is not released yet, in order to run the latest version an approach is to link it to a local version of the library
+Given the latest w3ui is not released yet, in order to run the latest version an approach is to link it to a local version of the library.
 
-* Clone w3ui
+### Clone and build all of the w3ui packages:
+* Clone w3ui: https://github.com/web3-storage/w3ui
+* `cd w3ui`
 * `git checkout next`
-* `> npm i`
-* `> npm run compile`
+* `npm i`
+* `npm run compile`
 * `npm run build`
-* For every package that needs installing:
-    * `cd package/_the_package_name`
+
+### Prepare the packages for linking
+This will ensure the file-hose repo can discover these linked packages.
+
+File-hose requires @w3ui/react-keyring' and '@w3ui/react-uploader', so the react-keyring and react-uploader packages need to be linked in w3ui.
+
+* Link react-keyring
+    * `cd package/react-keyring`
     * `npm link`
-    * Not sure if this is needed but I had to do it to solve a problem with 2 version of react bening imported `rm node_modules`
-* Not sure if this is needed but I had to do it to solve a problem with 2 version of react bening imported, cd root,  `rm node_modules` 
-* `npm link package_name1 package2 ...`
+    
+* Link react-uploader
+    * `cd package/react-uploader`
+    * `npm link`
+    
+* If any other packages are required, follow the same steps for that package.
+
+This will tell npm to link these packages. Next checkout the file-hose repo. 
+* Clone file-hose: https://github.com/web3-storage/file-hose
+* `cd file-hose`
+* `npm i`
+* `npm link @w3ui/react-keyring @w3ui/react-uploader` (this will link to both of the packages we linked earlier in the w3ui repo)
+* `npm start`
 
 ## Local development
 Install the required dependencies 
