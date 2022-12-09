@@ -12,9 +12,9 @@ Given the latest w3ui is not released yet, in order to run the latest version an
 * `rm -rf node_modules` (this step prevents multiple react versions)
 
 ### Prepare the packages for linking
-This will ensure the file-hose repo can discover these linked packages.
+This will ensure the file-space repo can discover these linked packages.
 
-File-hose requires @w3ui/react-keyring' and '@w3ui/react-uploader', so the react-keyring and react-uploader packages need to be linked in w3ui.
+file-space requires @w3ui/react-keyring' and '@w3ui/react-uploader', so the react-keyring and react-uploader packages need to be linked in w3ui.
 
 * Link react-keyring
     * `cd package/react-keyring`
@@ -28,9 +28,9 @@ File-hose requires @w3ui/react-keyring' and '@w3ui/react-uploader', so the react
 
 * If any other packages are required, follow the same steps for that package.
 
-This will tell npm to link these packages. Next checkout the file-hose repo. 
-* Clone file-hose: https://github.com/web3-storage/file-hose
-* `cd file-hose`
+This will tell npm to link these packages. Next checkout the file-space repo. 
+* Clone file-space: https://github.com/web3-storage/file-space
+* `cd file-space`
 * `npm i`
 * `npm link @w3ui/react-keyring @w3ui/react-uploader` (this will link to both of the packages we linked earlier in the w3ui repo)
 * `npm start`

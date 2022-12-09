@@ -23,7 +23,7 @@ export default function Header({ navLinks }) {
             className="nowrap dib f5 f4-ns fw6 mt0 mb1 link black-90"
             title="Home"
           >
-            File Hose
+            FileSpace
           </Link>
         </div>
 

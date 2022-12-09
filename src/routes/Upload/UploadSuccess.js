@@ -15,9 +15,7 @@ export default function UploadSuccess() {
 
   return (
     <div>
-      <h1 className="near-white">
-        Successfylly hosed to the interplenatary filesystem.
-      </h1>
+      <h1 className="">Successfylly hosed to the interplenatary filesystem.</h1>
       <p className="f6 code truncate">{dataCid.toString()}</p>
       Here's the link you can share to download the files:
       <div className="mt2">

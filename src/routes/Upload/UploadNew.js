@@ -8,7 +8,7 @@ import Loader from "../../components/Loader/Loader";
 export default function UploadNew() {
   const [{ storedDAGShards }, uploader] = useUploader();
   const [{}, { unloadAgent }] = useKeyring();
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("uploading");
 
   const [files, setFiles, dataCid, setDataCid] = useOutletContext();
   const navigate = useNavigate();

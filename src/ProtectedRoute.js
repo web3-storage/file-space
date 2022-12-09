@@ -12,11 +12,11 @@ export const ProtectedRoute = ({ children }) => {
   const [{ space }] = useKeyring();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!space?.registered()) {
-      navigate("/signin");
-    }
-  }, [space, navigate]);
+  // useEffect(() => {
+  //   if (!space?.registered()) {
+  //     navigate("/signin");
+  //   }
+  // }, [space, navigate]);
 
   return children;
 };
