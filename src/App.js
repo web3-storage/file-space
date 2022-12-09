@@ -23,6 +23,7 @@ import Header from "./components/Header/Header.js";
 import UploadNew from "./routes/Upload/UploadNew";
 import UploadSuccess from "./routes/Upload/UploadSuccess";
 import UploadError from "./routes/Upload/UploadError";
+import Download from "./routes/Download";
 
 function Index() {
   const [{ space }] = useKeyring();
@@ -80,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/download/:cid",
-        element: <div> Download the file </div>,
+        element: <Download />,
       },
       {
         path: "/upload/",
