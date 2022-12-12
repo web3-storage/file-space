@@ -54,7 +54,7 @@ function Root() {
           },
         ]}
       ></Header>
-      <div className="ph3 ph5-ns">
+      <div className="">
         <Outlet />
       </div>
     </>
