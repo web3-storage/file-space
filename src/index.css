@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.hero-card {
+  background-color:rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+
+a {
+  color: white;
+}

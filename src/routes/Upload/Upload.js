@@ -3,15 +3,15 @@ import { ReactComponent as PermanentIcon } from "../../icons/permanent.svg";
 import { ReactComponent as Globe } from "../../icons/globe.svg";
 
 import { Outlet } from "react-router-dom";
+import LineBg from "../../components/LineBg/LineBg";
 
 export default function Upload() {
   const [files, setFiles] = useState(null);
-  const [dataCid, setDataCid] = useState(
-    "bafkreiankqxazcae4onkp436wag2lj3ccso4nawxqkkfckd6cg4tr2kfsq"
-  );
+  const [dataCid, setDataCid] = useState();
   return (
-    <div className="flex flex-column items-center">
-      <div>
+    <section className="pa6 relative bg-navy white">
+      <LineBg></LineBg>
+      <div className="center relative mw7 hero-card">
         <div className="tc">
           <Outlet context={[files, setFiles, dataCid, setDataCid]} />
         </div>
@@ -31,19 +31,21 @@ export default function Upload() {
               <PermanentIcon width={20} /> Permanent Data
             </h2>
             <p>
-              All data uploaded to web3.storage is available to anyone who
-              requests it using the correct CID. **Users should not store any
-              private or sensitive information in an unencrypted form using
-              web3.storage.** Further, deleting files from web3.storage via the
-              site's Files page or API will remove them from the file listing
-              for a user's account, but nodes on the IPFS network may retain
-              copies of the data indefinitely. **Users should not use
-              web3.storage to store data that may need to be permanently deleted
-              in the future.
+              All data uploaded to FileSpace is available to anyone who requests
+              it using the correct CID.{" "}
+              <b>
+                Users should use the tool to share any private or sensitive
+                information in an unencrypted form.
+              </b>{" "}
+              Further, deleting files from web3.storage via the site's Files
+              page or API will remove them from the file listing for a user's
+              account, but nodes on the IPFS network may retain copies of the
+              data indefinitely. **Users should not use web3.storage to store
+              data that may need to be permanently deleted in the future.
             </p>
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 }

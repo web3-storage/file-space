@@ -8,7 +8,7 @@ import Loader from "../../components/Loader/Loader";
 export default function UploadNew() {
   const [{ storedDAGShards }, uploader] = useUploader();
   const [{}, { unloadAgent }] = useKeyring();
-  const [status, setStatus] = useState("uploading");
+  const [status, setStatus] = useState("");
 
   const [files, setFiles, dataCid, setDataCid] = useOutletContext();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const Uploading = ({ files, storedDAGShards }) => (
       <div className="tc">
         <Loader />
       </div>
-      <p className="truncate">
+      <p className="">
         Hold tight, once the upload is finished you will get a link you can
         share.
       </p>

@@ -20,7 +20,7 @@ export default function Header({ navLinks }) {
         <div className="flex items-center w-100 w-50-ns mb2 mb0-ns">
           <Link
             to="/home"
-            className="nowrap dib f5 f4-ns fw6 mt0 mb1 link black-90"
+            className="nowrap dib f5 f4-ns fw6 mt0 mb1 link navy"
             title="Home"
           >
             FileSpace
@@ -38,7 +38,7 @@ export default function Header({ navLinks }) {
               }}
               title="Documentation"
               to={navLink.to}
-              className="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib"
+              className="f6 fw6 hover-blue link navy mr2 mr3-m mr4-l dib"
             >
               {navLink.text}
             </NavLink>
