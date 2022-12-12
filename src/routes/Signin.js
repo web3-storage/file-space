@@ -19,7 +19,7 @@ export default function Signin() {
 
   if (submitted) {
     return (
-      <section className="pa6 bg-navy white">
+      <section className="min-vh-100 relative pa6 bg-navy white">
         <LineBg></LineBg>
         <div className="center relative mw6 hero-card">
           <h1 className="near-white">Verify your email address!</h1>
@@ -28,6 +28,7 @@ export default function Signin() {
             onSubmit={(e) => {
               e.preventDefault();
               cancelRegisterSpace();
+              navigate("/");
             }}
           >
             <button
@@ -61,11 +62,17 @@ export default function Signin() {
   }
 
   return (
-    <section className="min-vh-100 pa6 bg-navy white">
+    <section className="min-vh-100 relative pa6 bg-navy white">
       <LineBg></LineBg>
       <div className="center relative mw6 hero-card">
+        <h1>Sign in</h1>
         <form onSubmit={handleRegisterSubmit}>
           <div className="mb3">
+            <p>
+              {" "}
+              This will create an account for you on web3.storage, using w3up
+              beta APis
+            </p>
             <label htmlFor="email" className="db mb2">
               Email address:
             </label>
