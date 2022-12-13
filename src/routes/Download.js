@@ -74,6 +74,7 @@ export default function Download() {
                 format: "tar",
                 download: "true",
               })}
+              target="_blank"
             >
               Download
             </a>
