@@ -15,9 +15,8 @@ export default function Home() {
             <p>
               To transfer file(s) or folder(s) to others, we only need your
               email address to create a{" "}
-              <a href="web3.storage " target="_blank">
-                {" "}
-                web3.storage{" "}
+              <a href="https://web3.storage" target="_blank">
+                web3.storage
               </a>{" "}
               bucket where your files are safely stored. A shareable link is
               created and allows others to access these files through the IPFS

@@ -24,6 +24,7 @@ export default function Signin() {
         <div className="center relative mw6 hero-card">
           <h1 className="near-white">Verify your email address!</h1>
           <p>Click the link in the email we sent to {email} to sign in.</p>
+          <p>The email will come from Web3.Storage.</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -71,7 +72,7 @@ export default function Signin() {
             <p>
               {" "}
               This will create an account for you on web3.storage, using w3up
-              beta APis
+              beta APIs.
             </p>
             <label htmlFor="email" className="db mb2">
               Email address:
@@ -83,6 +84,7 @@ export default function Signin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoFocus
             />
           </div>
           <button
