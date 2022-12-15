@@ -8,7 +8,7 @@ function createUploadProp(dataUpload) {
   return {
     name: dataUpload.root.toString(),
     cid: dataUpload.root.toString(),
-    updatedAt: dataUpload.updatedAt,
+    updatedAt: new Date(dataUpload.updatedAt).toLocaleDateString(),
     // TODO: this should be done using router apis, and probably be abstracted in a custom hook.
     link: `${window.location.protocol}//${
       window.location.host
@@ -51,8 +51,7 @@ function UploadTable({ data, columns }) {
 
 export default function Dashboard() {
   const columns = [
-    { label: "Name", key: "name" },
-    { label: "Cid", key: "cid" },
+    { label: "CID", key: "cid" },
     { label: "Updated at", key: "updatedAt" },
     { label: "Link", key: "link" },
   ];
