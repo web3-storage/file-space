@@ -11,7 +11,7 @@ function createUploadProp(dataUpload) {
     name: dataUpload.root.toString(),
     cid: dataUpload.root.toString(),
     updatedAt: new Date(dataUpload.updatedAt).toLocaleString(),
-    linkPath: `download/${dataUpload.root.toString()}`,
+    linkPath: `/download/${dataUpload.root.toString()}`,
   };
 }
 /**
