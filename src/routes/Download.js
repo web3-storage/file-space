@@ -23,8 +23,9 @@ function FileSize({ size }) {
  * @param {string} [opt.download]
  */
 const getGatewayLink = (cid, opt = {}) => {
-  const params = new URLSearchParams(opt);
-  return `https://${cid}.ipfs.dweb.link/?${params}`;
+  const params = `?${new URLSearchParams(opt)}`;
+
+  return `https://w3s.link/ipfs/${cid}${opt ? params : ""}`;
 };
 
 export default function Download() {
