@@ -8,7 +8,7 @@ export default function UploadNew() {
   const [{ storedDAGShards }, uploader] = useUploader();
   const [status, setStatus] = useState("");
 
-  const [files, setFiles, setDataCid] = useOutletContext();
+  const [files, setFiles, dataCid, setDataCid] = useOutletContext(); // eslint-disable-line no-unused-vars
   const navigate = useNavigate();
 
   if (!uploader) return null;
@@ -18,7 +18,8 @@ export default function UploadNew() {
     try {
       setStatus("uploading");
       const cid = await uploader.uploadDirectory(filesToUpload);
-      setDataCid(cid);
+
+      setDataCid(cid.toString());
     } catch (err) {
       console.error(err);
       return navigate("./error");

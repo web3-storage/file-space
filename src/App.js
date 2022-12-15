@@ -2,13 +2,6 @@ import React, { useEffect } from "react";
 import { KeyringProvider, useKeyring } from "@w3ui/react-keyring";
 import { UploaderProvider } from "@w3ui/react-uploader";
 import {
-  accessServiceConnection,
-  accessServicePrincipal,
-  uploadServiceConnection,
-  uploadServicePrincipal,
-} from "./StagingService";
-
-import {
   createBrowserRouter,
   RouterProvider,
   useNavigate,
@@ -61,73 +54,69 @@ function Root() {
   );
 }
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <div> Ups! Not found! Go back to homepage </div>,
-    children: [
-      {
-        path: "/",
-        element: <Index />,
-      },
-      {
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        path: "/signin",
-        element: <Signin />,
-      },
-      {
-        path: "/download/:cid",
-        element: <Download />,
-      },
-      {
-        path: "/upload/",
-        element: (
-          <ProtectedRoute>
-            <Upload />
-          </ProtectedRoute>
-        ),
-        children: [
-          { index: true, element: <UploadNew /> },
-          {
-            path: "success/",
-            element: <UploadSuccess />,
-          },
-          {
-            path: "error/",
-            element: <UploadError />,
-          },
-        ],
-      },
-      {
-        path: "/dashboard",
-        element: (
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        ),
-      },
-    ],
-  },
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <div> Ups! Not found! Go back to homepage </div>,
+      children: [
+        {
+          path: "/",
+          element: <Index />,
+        },
+        {
+          path: "/home",
+          element: <Home />,
+        },
+        {
+          path: "/signin",
+          element: <Signin />,
+        },
+        {
+          path: "/download/:cid",
+          element: <Download />,
+        },
+        {
+          path: "/upload/",
+          element: (
+            <ProtectedRoute>
+              <Upload />
+            </ProtectedRoute>
+          ),
+          children: [
+            { index: true, element: <UploadNew /> },
+            {
+              path: "success/",
+              element: <UploadSuccess />,
+            },
+            {
+              path: "error/",
+              element: <UploadError />,
+            },
+          ],
+        },
+        {
+          path: "/dashboard",
+          element: (
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
   ],
   {
-    basename: window.location === 'https://web3-storage.github.io' ? '/file-space' : ''
+    basename:
+      window.location === "https://web3-storage.github.io" ? "/file-space" : "",
   }
 );
 
 function App() {
   return (
-    <KeyringProvider
-      servicePrincipal={accessServicePrincipal}
-      connection={accessServiceConnection}
-    >
-      <UploaderProvider
-        servicePrincipal={uploadServicePrincipal}
-        connection={uploadServiceConnection}
-      >
+    <KeyringProvider>
+      <UploaderProvider>
         <AgentLoader>
           <RouterProvider router={router}></RouterProvider>
         </AgentLoader>
