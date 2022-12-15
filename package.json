@@ -2,7 +2,7 @@
   "name": "file-space",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://web3-storage.github.io/file-space/",
+  "homepage": "https://web3-storage.github.io/file-space",
   "dependencies": {
     "@ipld/dag-ucan": "^3.0.1",
     "@ucanto/client": "^3.0.4",
