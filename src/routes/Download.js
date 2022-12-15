@@ -75,6 +75,7 @@ export default function Download() {
                 download: "true",
               })}
               target="_blank"
+              rel="noreferrer"
             >
               Download
             </a>
