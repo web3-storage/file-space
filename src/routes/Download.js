@@ -25,7 +25,7 @@ function FileSize({ size }) {
 const getGatewayLink = (cid, opt = {}) => {
   const params = `?${new URLSearchParams(opt)}`;
 
-  return `https://w3s.link/ipfs/${cid}${opt ? params : ""}`;
+  return `https://${cid}.ipfs.w3s.link${opt ? params : ""}`;
 };
 
 export default function Download() {
@@ -88,7 +88,9 @@ export default function Download() {
             <a
               className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"
               href="/"
-            >Find out more</a>
+            >
+              Find out more
+            </a>
           </div>
         </div>
       </div>
