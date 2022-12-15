@@ -35,11 +35,11 @@ function LinkToBeCopied({ path }) {
  */
 function UploadItem({ upload, columns }) {
   return (
-    <dl className="lh-title pv2 mt0">
+    <dl className="lh-title pv2">
       {columns.map((c) => (
         <Fragment key={`${upload.cid}-${c.key}`}>
-          <dt className="f6 b mt2">{c.label}</dt>
-          <dd className="ml0">
+          <dt className="f6 b mb2">{c.label}</dt>
+          <dd className="ml0 mb3">
             {c.key === "linkPath" ? (
               <LinkToBeCopied path={upload[c.key]} />
             ) : (
