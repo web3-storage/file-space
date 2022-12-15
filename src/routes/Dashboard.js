@@ -1,35 +1,52 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useUploadsList } from "@w3ui/react-uploads-list";
 import { useEffect } from "react";
 import LineBg from "../components/LineBg/LineBg";
 import CopyText from "../components/CopyText/CopyText";
+import { useAbsoluteHref } from "../utils";
+import Loader from "../components/Loader/Loader";
 
 function createUploadProp(dataUpload) {
   return {
     name: dataUpload.root.toString(),
     cid: dataUpload.root.toString(),
-    updatedAt: new Date(dataUpload.updatedAt).toLocaleDateString(),
-    // TODO: this should be done using router apis, and probably be abstracted in a custom hook.
-    link: `${window.location.protocol}//${
-      window.location.host
-    }/download/${dataUpload.root.toString()}`,
+    updatedAt: new Date(dataUpload.updatedAt).toLocaleString(),
+    linkPath: `download/${dataUpload.root.toString()}`,
   };
 }
+/**
+ * Created so that we can call the useAbsoluteHref at root component level and avoid any issues with calling
+ * a hook within a loop.
+ * @param {object} props
+ * @param {string} props.path
+ * @returns
+ */
+function LinkToBeCopied({ path }) {
+  const link = useAbsoluteHref(path);
+  return <CopyText text={link}></CopyText>;
+}
 
+/**
+ *
+ * @param {object} props
+ * @param {object} props.upload
+ * @param {object[]} props.columns
+ * @returns
+ */
 function UploadItem({ upload, columns }) {
   return (
     <dl className="lh-title pv2 mt0">
       {columns.map((c) => (
-        <>
+        <Fragment key={`${upload.cid}-${c.key}`}>
           <dt className="f6 b mt2">{c.label}</dt>
           <dd className="ml0">
-            {c.key === "link" ? (
-              <CopyText text={upload[c.key]}></CopyText>
+            {c.key === "linkPath" ? (
+              <LinkToBeCopied path={upload[c.key]} />
             ) : (
               <>{upload[c.key] || "-"}</>
             )}
           </dd>
-        </>
+        </Fragment>
       ))}
     </dl>
   );
@@ -38,13 +55,10 @@ function UploadItem({ upload, columns }) {
 function UploadTable({ data, columns }) {
   return (
     <>
-      {data.map((item) => (
-        <UploadItem
-          key={item.cid}
-          upload={createUploadProp(item)}
-          columns={columns}
-        />
-      ))}
+      {data.map((item) => {
+        const u = createUploadProp(item);
+        return <UploadItem key={u.cid} upload={u} columns={columns} />;
+      })}
     </>
   );
 }
@@ -53,7 +67,7 @@ export default function Dashboard() {
   const columns = [
     { label: "CID", key: "cid" },
     { label: "Updated at", key: "updatedAt" },
-    { label: "Link", key: "link" },
+    { label: "Link", key: "linkPath" },
   ];
   const [{ loading, error, data }, { next, reload }] = useUploadsList();
   useEffect(() => {
@@ -62,6 +76,12 @@ export default function Dashboard() {
 
   if (error) {
     return <> An error</>;
+  }
+
+  if (loading) {
+    <>
+      <Loader></Loader>
+    </>;
   }
 
   return (
