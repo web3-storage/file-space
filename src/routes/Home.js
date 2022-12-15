@@ -1,6 +1,7 @@
 import React from "react";
 import LineBg from "../components/LineBg/LineBg";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -22,12 +23,7 @@ export default function Home() {
               created and allows others to access these files through the IPFS
               gateaway.
             </p>
-            <a
-              className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"
-              href="/signin"
-            >
-              Start Now
-            </a>
+            <Link className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"to="/signin">Start Now</Link>
           </div>
         </div>
       </section>
