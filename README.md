@@ -2,6 +2,19 @@
 ## How to link to local version on w3ui
 Given the latest w3ui is not released yet, in order to run the latest version an approach is to link it to a local version of the library.
 
+## Local development
+Install the required dependencies 
+```npm i```
+
+and then you can run the local server with
+
+```
+npm start
+```
+
+
+## If you want to test the app with a not yet release version of w3ui
+
 ### Clone and build all of the w3ui packages:
 * Clone w3ui: https://github.com/web3-storage/w3ui
 * `cd w3ui`
@@ -47,13 +60,3 @@ It's due to multiple react versions. To solve this, remove the node_modules in t
 * rm -rf node_modules
 * rm -rf packages/react-uploader/node_modules
 * rm -rf packages/react-keyring/node_modules
-
-## Local development
-Install the required dependencies 
-```npm i```
-
-and then you can run the local server with
-
-```
-npm start
-```
