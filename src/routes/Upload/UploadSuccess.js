@@ -1,16 +1,16 @@
 import React from "react";
-import { useHref, useNavigate, useOutletContext } from "react-router-dom";
+import { Navigate, useHref, useOutletContext } from "react-router-dom";
 import CopyText from "../../components/CopyText/CopyText";
 
 export default function UploadSuccess() {
   const [files, setFiles, dataCid, setDataCid] = useOutletContext(); // eslint-disable-line no-unused-vars
-  const navigate = useNavigate();
 
   const link = `${window.location.protocol}//${window.location.host}${useHref(
     `/download/${dataCid}`
   )}`;
+
   if (!dataCid) {
-    return navigate("/upload");
+    return <Navigate to="/upload" />;
   }
 
   return (
