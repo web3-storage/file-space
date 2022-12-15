@@ -15,7 +15,7 @@ export default function Home() {
             <p>
               To transfer file(s) or folder(s) to others, we only need your
               email address to create a{" "}
-              <a href="https://web3.storage" target="_blank">
+              <a href="https://web3.storage" target="_blank" rel="noreferrer">
                 web3.storage
               </a>{" "}
               bucket where your files are safely stored. A shareable link is
@@ -45,13 +45,13 @@ export default function Home() {
           </p>
         </div>
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center"></img>
+          <img src="placeholder.png" className="w5 center" alt=""></img>
         </div>
       </section>
 
       <section className="mw8 center pv6 flex items-center ph3">
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center"></img>
+          <img src="placeholder.png" className="w5 center" alt=""></img>
         </div>
         <div className="w-100 w-60-ns">
           <h2>Why content addressing over location (URL) addressing?</h2>
@@ -84,7 +84,7 @@ export default function Home() {
           </p>
         </div>
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center"></img>
+          <img src="placeholder.png" className="w5 center" alt=""></img>
         </div>
       </section>
     </div>
