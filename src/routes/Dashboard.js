@@ -1,86 +1,85 @@
 import React from "react";
 import { useUploadsList } from "@w3ui/react-uploads-list";
 import { useEffect } from "react";
+import LineBg from "../components/LineBg/LineBg";
+import CopyText from "../components/CopyText/CopyText";
 
-function UploadRow({ upload }) {
+function createUploadProp(dataUpload) {
+  return {
+    name: dataUpload.root.toString(),
+    cid: dataUpload.root.toString(),
+    updatedAt: dataUpload.updatedAt,
+    // TODO: this should be done using router apis, and probably be abstracted in a custom hook.
+    link: `${window.location.protocol}//${
+      window.location.host
+    }/download/${dataUpload.root.toString()}`,
+  };
+}
+
+function UploadItem({ upload, columns }) {
   return (
-    <tr className="striped--near-white">
-      <th>{upload.name}</th>
-      <th>
-        <a
-          target="_blank"
-          href={`https://w3s.link/ipfs/${upload.cid}/`}
-          rel="noreferrer"
-        >
-          {upload.cid}
-        </a>
-      </th>
-      <th>
-        <a
-          href={`https://${upload.cid}.ipfs.cf-ipfs.com/?download=true&name=${upload.name}`}
-          rel="noreferrer"
-          download={upload.name}
-        >
-          Download
-        </a>
-      </th>
-    </tr>
+    <dl className="lh-title pv2 mt0">
+      {columns.map((c) => (
+        <>
+          <dt className="f6 b mt2">{c.label}</dt>
+          <dd className="ml0">
+            {c.key === "link" ? (
+              <CopyText text={upload[c.key]}></CopyText>
+            ) : (
+              <>{upload[c.key] || "-"}</>
+            )}
+          </dd>
+        </>
+      ))}
+    </dl>
+  );
+}
+
+function UploadTable({ data, columns }) {
+  return (
+    <>
+      {data.map((item) => (
+        <UploadItem
+          key={item.cid}
+          upload={createUploadProp(item)}
+          columns={columns}
+        />
+      ))}
+    </>
   );
 }
 
 export default function Dashboard() {
-  const uploads = [
-    {
-      cid: "bafybeic7zrcqvhanfwl4o7ei3565o55ovu7bnrqdocumj6pg6s6dfskpvy",
-      name: "test",
-    },
-    {
-      cid: "bafybeic7zrcqvhanfwl4o7ei3565o55ovu7bnrqdocumj6pg6s6dfskpvy",
-      name: "test2",
-    },
+  const columns = [
+    { label: "Name", key: "name" },
+    { label: "Cid", key: "cid" },
+    { label: "Updated at", key: "updatedAt" },
+    { label: "Link", key: "link" },
   ];
-
-  const [{ loading, error, data }, { reload }] = useUploadsList();
+  const [{ loading, error, data }, { next, reload }] = useUploadsList();
   useEffect(() => {
-    reload();
+    next();
   }, []);
+
+  if (error) {
+    return <> An error</>;
+  }
+
   return (
-    <div>
-      <h1>My uploads</h1>
-      <div className="collapse ba br2 b--black-10 pv2 ph3 mt4">
-        <div className="w-90 mw9">
-          {data && data.length ? (
-            <div className="overflow-auto">
-              <div className="w-100 mb3 collapse">
-                <thead className="near-white tl">
-                  <tr>
-                    <th className="pa3">Data CID</th>
-                    <th className="pa3">CAR CID</th>
-                    <th className="pa3">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((item) => (
-                    <UploadRow
-                      upload={{
-                        name: item.root.toString(),
-                        cid: item.root.toString(),
-                      }}
-                      key={item.root.toString()}
-                    />
-                  ))}
-                </tbody>
-              </div>
-            </div>
-          ) : (
-            <p className="tc">No uploads</p>
-          )}
-          <button type="button" onClick={reload} className="ph3 pv2 mr3">
-            Refresh
-          </button>
-          {loading ? <span className="spinner dib" /> : null}
-        </div>
+    <section className="pa6 relative bg-navy white">
+      <LineBg></LineBg>
+      <div className="center relative mw9 hero-card">
+        <h1>My uploads</h1>
+        {data && data.length ? (
+          <UploadTable columns={columns} data={data} />
+        ) : (
+          <p className="tc">No uploads</p>
+        )}
+        <button type="button" onClick={reload} className="ph3 pv2 mr3">
+          Refresh
+        </button>
+        {loading ? <span className="spinner dib" /> : null}
       </div>
-    </div>
+    </section>
   );
 }
