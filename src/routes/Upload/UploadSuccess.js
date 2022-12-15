@@ -3,7 +3,7 @@ import { useHref, useNavigate, useOutletContext } from "react-router-dom";
 import CopyText from "../../components/CopyText/CopyText";
 
 export default function UploadSuccess() {
-  const [files, setFiles, dataCid, setDataCid] = useOutletContext();
+  const [dataCid] = useOutletContext();
   const navigate = useNavigate();
 
   const link = `${window.location.protocol}//${window.location.host}${useHref(

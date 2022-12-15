@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { useUploader } from "@w3ui/react-uploader";
-import { useKeyring } from "@w3ui/react-keyring";
-import FilePicker from "../../components/FilePicker/FilePicker";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function UploadError() {

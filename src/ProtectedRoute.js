@@ -1,6 +1,6 @@
-import { useKeyring } from "@w3ui/react-keyring";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useKeyring } from "@w3ui/react-keyring";
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 /**
  *
@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
  * @returns
  */
 export const ProtectedRoute = ({ children }) => {
-  const [{ space }] = useKeyring();
-  const navigate = useNavigate();
+  // const [{ space }] = useKeyring();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   if (!space?.registered()) {

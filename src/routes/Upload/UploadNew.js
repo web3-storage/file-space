@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useUploader } from "@w3ui/react-uploader";
-import { useKeyring } from "@w3ui/react-keyring";
 import FilePicker from "../../components/FilePicker/FilePicker";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
 export default function UploadNew() {
   const [{ storedDAGShards }, uploader] = useUploader();
-  const [{}, { unloadAgent }] = useKeyring();
   const [status, setStatus] = useState("");
 
-  const [files, setFiles, dataCid, setDataCid] = useOutletContext();
+  const [files, setFiles, setDataCid] = useOutletContext();
   const navigate = useNavigate();
 
   if (!uploader) return null;
