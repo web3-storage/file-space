@@ -80,6 +80,15 @@ export default function Download() {
             </a>
           </div>
         </div>
+        <div className="tc mt6 mb5">
+          <h2>Use FileSpace to share your own files</h2>
+          <div className="mt5">
+            <a
+              className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"
+              href="/"
+            >Find out more</a>
+          </div>
+        </div>
       </div>
     </section>
   );
