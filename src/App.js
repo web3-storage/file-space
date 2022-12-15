@@ -18,6 +18,7 @@ import UploadSuccess from "./routes/Upload/UploadSuccess";
 import UploadError from "./routes/Upload/UploadError";
 import Download from "./routes/Download";
 import LoaderPage from "./components/LoaderPage/Loader";
+import { UploadsListProvider } from "@w3ui/react-uploads-list";
 
 function Index() {
   const [{ space }] = useKeyring();
@@ -58,7 +59,7 @@ function Root() {
           },
         ]}
       ></Header>
-      <div className="">
+      <div className="ph3 ph5-ns">
         <Outlet />
       </div>
     </>
@@ -132,9 +133,11 @@ function App() {
   return (
     <KeyringProvider>
       <UploaderProvider>
-        <AgentLoader>
-          <RouterProvider router={router}></RouterProvider>
-        </AgentLoader>
+        <UploadsListProvider>
+          <AgentLoader>
+            <RouterProvider router={router}></RouterProvider>
+          </AgentLoader>
+        </UploadsListProvider>
       </UploaderProvider>
     </KeyringProvider>
   );
