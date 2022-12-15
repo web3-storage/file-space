@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { KeyringProvider, useKeyring } from "@w3ui/react-keyring";
 import { UploaderProvider } from "@w3ui/react-uploader";
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   useNavigate,
   Outlet,
@@ -54,7 +54,7 @@ function Root() {
   );
 }
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       path: "/",
@@ -104,6 +104,10 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           ),
         },
+        {
+          path: "*",
+          element: <h1>404</h1>
+        }
       ],
     },
   ],
