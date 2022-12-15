@@ -112,7 +112,11 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+  ],
+  {
+    basename: window.location === 'https://web3-storage.github.io' ? '/file-space' : ''
+  }
+);
 
 function App() {
   return (
