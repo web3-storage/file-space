@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import LineBg from "../components/LineBg/LineBg";
 import CopyText from "../components/CopyText/CopyText";
 import { useAbsoluteHref } from "../utils";
-import Loader from "../components/Loader/Loader";
 import LoaderPage from "../components/LoaderPage/Loader";
 
 function createUploadProp(dataUpload) {
@@ -73,6 +72,7 @@ export default function Dashboard() {
   const [{ loading, error, data }, { next, reload }] = useUploadsList();
   useEffect(() => {
     next();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (error) {
