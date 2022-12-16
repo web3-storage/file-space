@@ -18,15 +18,13 @@ export default function UploadNew() {
     try {
       setStatus("uploading");
       const cid = await uploader.uploadDirectory(filesToUpload);
-
       setDataCid(cid.toString());
+      setStatus("done");
+      navigate("/upload/success");
     } catch (err) {
       console.error(err);
-      return navigate("./error");
+      navigate("./error");
     }
-
-    setStatus("done");
-    return navigate("./success");
   };
 
   if (status === "uploading") {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import CopyText from "../../components/CopyText/CopyText";
 import { useAbsoluteHref } from "../../utils";
 
@@ -9,12 +9,12 @@ export default function UploadSuccess() {
   const link = useAbsoluteHref(`/download/${dataCid}`);
 
   if (!dataCid) {
-    return <Navigate to="/upload" />;
+    return <div></div>;
   }
 
   return (
     <div>
-      <h1 className="">Successfylly hosed to the interplenatary filesystem.</h1>
+      <h1 className="">Successfully hosed to the interplenatary filesystem.</h1>
       <p className="f6 code truncate">{dataCid.toString()}</p>
       Here's the link you can share to download the files:
       <div className="mt2">
