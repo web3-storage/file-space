@@ -5,6 +5,7 @@ import LineBg from "../components/LineBg/LineBg";
 import CopyText from "../components/CopyText/CopyText";
 import { useAbsoluteHref } from "../utils";
 import Loader from "../components/Loader/Loader";
+import LoaderPage from "../components/LoaderPage/Loader";
 
 function createUploadProp(dataUpload) {
   return {
@@ -79,9 +80,7 @@ export default function Dashboard() {
   }
 
   if (loading) {
-    <>
-      <Loader></Loader>
-    </>;
+    return <LoaderPage />;
   }
 
   return (
