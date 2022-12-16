@@ -19,7 +19,6 @@ import UploadError from "./routes/Upload/UploadError";
 import Download from "./routes/Download";
 import LoaderPage from "./components/LoaderPage/Loader";
 import { UploadsListProvider } from "@w3ui/react-uploads-list";
-// import { APP_BASENAME } from "./utils";
 
 function Index() {
   const [{ space, agent }] = useKeyring();
@@ -125,7 +124,8 @@ const router = createHashRouter(
     },
   ],
   {
-    // basename: APP_BASENAME,
+    basename:
+      window.location === "https://web3-storage.github.io" ? "/file-space" : "",
   }
 );
 

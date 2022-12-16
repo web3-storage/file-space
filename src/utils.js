@@ -1,10 +1,5 @@
 import { useHref } from "react-router";
 
-export const APP_BASENAME =
-  window.location.hostname.toString() === "web3-storage.github.io"
-    ? "/file-space"
-    : "";
-
 /**
  *
  * @param {Event} e
@@ -35,7 +30,5 @@ export function formatBytes(bytes, decimals = 2) {
 }
 
 export function useAbsoluteHref(path) {
-  return `${window.location.protocol}//${
-    window.location.host
-  }${APP_BASENAME}${useHref(path)}`;
+  return `${window.location.protocol}//${window.location.host}${useHref(path)}`;
 }
