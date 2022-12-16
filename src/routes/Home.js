@@ -35,7 +35,7 @@ export default function Home() {
       </section>
       <section className="mw8 relative center pv6 flex items-center ph3">
         <div className="w-100 w-60-ns">
-          <h2>How dows it work?</h2>
+          <h2>How does it work?</h2>
           <p>
             FileSpace is powered by w3up, an upload API which uses Elastic IPFS,
             the Internet's largest cloud implementation of IPFS, a protocol
