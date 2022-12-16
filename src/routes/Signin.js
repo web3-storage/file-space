@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useKeyring } from "@w3ui/react-keyring";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import LineBg from "../components/LineBg/LineBg";
+import LoaderPage from "../components/LoaderPage/Loader";
 
 export default function Signin() {
-  const [{ space }, { createSpace, registerSpace, cancelRegisterSpace }] =
-    useKeyring();
+  const [
+    { space, agent },
+    { createSpace, registerSpace, cancelRegisterSpace },
+  ] = useKeyring();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
     if (space?.registered()) {
-      navigate("/upload");
+      setSignedIn(true);
     }
-  }, [navigate, space]);
+  }, [space]);
+
+  // We don't know yet if we're loggedIn or not
+  if (!agent) {
+    return <LoaderPage />;
+  }
+
+  if (signedIn) {
+    return <Navigate to="/upload" />;
+  }
 
   if (submitted) {
     return (
