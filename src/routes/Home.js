@@ -1,6 +1,9 @@
 import React from "react";
 import LineBg from "../components/LineBg/LineBg";
 import "./Home.css";
+import SpaceImage1 from "../icons/space-1.png";
+import SpaceImage2 from "../icons/space-2.png";
+import SpaceImage3 from "../icons/space-3.png";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -33,7 +36,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="mw8 relative center pv6 flex items-center ph3">
+      <section className="mw8 relative center pt6 pb4 flex items-center ph3">
         <div className="w-100 w-60-ns">
           <h2>How dows it work?</h2>
           <p>
@@ -47,13 +50,13 @@ export default function Home() {
           </p>
         </div>
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center" alt=""></img>
+          <img src={SpaceImage1} className="w5 center h-100" alt="" width="512" height="512"></img>
         </div>
       </section>
 
-      <section className="mw8 center pv6 flex items-center ph3">
+      <section className="mw8 center pv4 flex items-center ph3">
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center" alt=""></img>
+          <img src={SpaceImage3} className="w5 center h-100" alt="" width="512" height="512"></img>
         </div>
         <div className="w-100 w-60-ns">
           <h2>Why content addressing over location (URL) addressing?</h2>
@@ -75,7 +78,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mw8 relative center pv6 flex items-center ph3">
+      <section className="mw8 relative center pt4 pb6 flex items-center ph3">
         <div className="w-100 w-60-ns">
           <h2>What's my limit?</h2>
           <p>
@@ -86,7 +89,7 @@ export default function Home() {
           </p>
         </div>
         <div className="w-100 w-40-ns flex">
-          <img src="placeholder.png" className="w5 center" alt=""></img>
+          <img src={SpaceImage2} className="w5 center h-100" alt="" width="512" height="512"></img>
         </div>
       </section>
     </div>
