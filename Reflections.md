@@ -9,6 +9,35 @@
 
 - Add APIs to batch delete files
 
+
+## Questions
+
+### Multiple agents.
+We couldn't quite figure out how to hadle a scenario where UserA logs in from DeviceA. 
+Creating an AgentA and SpaceA (name="FilesSoace").
+Now it logs from DeviceB, the expectations is to be able to use the same SpaceA, from there.
+
+How can this behavior be achieved in a FE only app?
+One way would be to have a "link feature" where basically AgentA could delegate access to AgentB leveraging
+```
+const delegation = await agent.delegate({
+  audience: 'did:key:kAgentToDelegateTo',
+  abilities: [
+    {
+      can: 'space/info',
+      with: agent.currentSpace()
+    }
+  ]
+})
+```
+
+But what if DevicesA is lost, or the Agent keys are gone?
+Are there ways to create Agents that have "account" like capabilities?
+
+
+In client/server kind of situation, would the server create an Agent per user and delegate access to the different client agents? 
+
+
 ## TODO
 - Implement delete and batch delete
 - Implement "Add to my account"
