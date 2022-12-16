@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useKeyring } from "@w3ui/react-keyring";
 import { Navigate, useNavigate } from "react-router-dom";
 import LineBg from "../components/LineBg/LineBg";
-import Loader from "../components/Loader/Loader";
 import LoaderPage from "../components/LoaderPage/Loader";
 
 export default function Signin() {
