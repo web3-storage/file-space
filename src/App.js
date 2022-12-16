@@ -21,7 +21,7 @@ import LoaderPage from "./components/LoaderPage/Loader";
 import { UploadsListProvider } from "@w3ui/react-uploads-list";
 
 function Index() {
-  const [{ space }] = useKeyring();
+  const [{ space, agent }] = useKeyring();
   const [registered, setRegistered] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Index() {
   }, [space]);
 
   // We don't know yet
-  if (!space) {
+  if (!agent) {
     return <LoaderPage />;
   }
 
