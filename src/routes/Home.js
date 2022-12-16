@@ -14,16 +14,22 @@ export default function Home() {
             <h2>We make file sharing easy.</h2>
             <div className="flex"></div>
             <p>
-              To transfer file(s) or folder(s) to others, we only need your
-              email address to create a{" "}
+              To start transferring files or folders to others, please click
+              below and share your email address. We'll create your personal{" "}
               <a href="https://web3.storage" target="_blank" rel="noreferrer">
                 web3.storage
               </a>{" "}
-              bucket where your files are safely stored. A shareable link is
-              created and allows others to access these files through the IPFS
-              gateaway.
+              bucket for you where your files will be safely stored. You can
+              then start uploading to this bucket and a shareable link will be
+              created for each upload, allowing others to access these files
+              through the IPFS gateway.
             </p>
-            <Link className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"to="/signin">Start Now</Link>
+            <Link
+              className="f5 link dim br3 ph4 pv3 mb2 dib white bg-near-black bd ba b--white-70"
+              to="/signin"
+            >
+              Start Now
+            </Link>
           </div>
         </div>
       </section>
@@ -33,11 +39,11 @@ export default function Home() {
           <p>
             FileSpace is powered by w3up, an upload API which uses Elastic IPFS,
             the Internet's largest cloud implementation of IPFS, a protocol
-            which web3.storage used to locate files by their content identifier
+            which web3.storage uses to locate files by their content identifier
             (CID). What this means is that your files will be stored on the
             decentralised web and available over the public IPFS network. From
-            then on you can interact with your data by using its content
-            identifier and can share this identifier with anyone.
+            then on you can interact with your data on the web by using its
+            content identifier.
           </p>
         </div>
         <div className="w-100 w-40-ns flex">

@@ -31,17 +31,24 @@ export default function Upload() {
               <PermanentIcon width={20} /> Permanent Data
             </h2>
             <p>
-              All data uploaded to FileSpace is available to anyone who requests
-              it using the correct CID.{" "}
+              All data uploaded to web3.storage is available to anyone who
+              requests it using the correct CID.{" "}
+            </p>
+            <p>
               <b>
                 Users should use the tool to share any private or sensitive
                 information in an unencrypted form.
               </b>{" "}
+            </p>
+            <p>
               Further, deleting files from web3.storage via the site's Files
               page or API will remove them from the file listing for a user's
               account, but nodes on the IPFS network may retain copies of the
-              data indefinitely. **Users should not use web3.storage to store
-              data that may need to be permanently deleted in the future.
+              data indefinitely.
+              <b>
+                Users should not use web3.storage to store data that may need to
+                be permanently deleted in the future.
+              </b>
             </p>
           </div>
         </section>
