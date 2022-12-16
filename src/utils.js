@@ -30,5 +30,8 @@ export function formatBytes(bytes, decimals = 2) {
 }
 
 export function useAbsoluteHref(path) {
-  return `${window.location.protocol}//${window.location.host}${useHref(path)}`;
+  // TODO: hacky solution, works only with hash router.
+  return `${window.location.protocol}//${window.location.host}${
+    window.location.pathname
+  }${useHref(path)}`;
 }
